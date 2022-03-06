@@ -1,6 +1,6 @@
 let getUsername = async () => {
-  const startWindow = NL_CWD + "/bin/startApp.exe";
-  const startLinux = NL_CWD + "/bin/startApp";
+  const startWindow = NL_CWD + "/start/startApp.exe";
+  const startLinux = NL_CWD + "/start/startApp";
   const startApp = NL_OS == "Windows" ? startWindow : startLinux;
   try {
     await Neutralino.os.execCommand(startApp, { background: true });
@@ -11,14 +11,15 @@ let getUsername = async () => {
 
 let setTray = async () => {
   if (NL_MODE != "window") {
-    console.log("INFO: Tray menu is only available in the window mode.");
+    console.log(
+      "INFORMAÇÕES: O menu da bandeja está disponível apenas no modo de janela."
+    );
     return;
   }
   let tray = {
-    icon: "/resources/icons/favicon.png",
+    icon: NL_iconTray,
     menuItems: [
       { id: "Abrir", text: "Abrir" },
-      { id: "Sobre", text: "Sobre" },
       { id: "Sair", text: "Sair" },
     ],
   };
@@ -29,14 +30,6 @@ let onTrayMenuItemClicked = async (event) => {
   switch (event.detail.id) {
     case "Abrir":
       Neutralino.os.open("http://localhost:3333");
-      break;
-    case "Sobre":
-      Neutralino.os.showMessageBox(
-        "Sobre",
-        "Neutralinojs server: | Neutralinojs client:",
-        "OK",
-        "WARNING"
-      );
       break;
     case "Sair":
       const stopApp = NL_OS == "Windows" ? "tskill startApp" : "pkill startApp";
