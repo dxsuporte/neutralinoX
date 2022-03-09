@@ -45,7 +45,7 @@
     }
   },
   "cli": {
-    "binaryName": "neutralinoX",
+    "binaryName": "startApp",
     "resourcesPath": "/resources/",
     "extensionsPath": "/extensions/",
     "clientLibrary": "/resources/js/neutralino.js",

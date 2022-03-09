@@ -1,6 +1,6 @@
 let getUsername = async () => {
-  const startWindow = NL_CWD + "/start/startApp.exe";
-  const startLinux = NL_CWD + "/start/startApp";
+  const startWindow = NL_CWD + "/start/startapp-win.exe";
+  const startLinux = NL_CWD + "/start/startapp-linux";
   const startApp = NL_OS == "Windows" ? startWindow : startLinux;
   try {
     await Neutralino.os.execCommand(startApp, { background: true });
@@ -32,7 +32,8 @@ let onTrayMenuItemClicked = async (event) => {
       Neutralino.os.open("http://localhost:3333");
       break;
     case "Sair":
-      const stopApp = NL_OS == "Windows" ? "tskill startApp" : "pkill startApp";
+      const stopApp =
+        NL_OS == "Windows" ? "tskill startapp-win" : "pkill startapp-linux";
       try {
         let info = await Neutralino.os.execCommand(stopApp, {
           background: true,
@@ -48,7 +49,8 @@ let onTrayMenuItemClicked = async (event) => {
 };
 
 let onWindowClose = async () => {
-  const stopApp = NL_OS == "Windows" ? "tskill startApp" : "pkill startApp";
+  const stopApp =
+    NL_OS == "Windows" ? "tskill startapp-win" : "pkill pkill startapp-linux";
   try {
     let info = await Neutralino.os.execCommand(stopApp, { background: true });
     if (info) {
