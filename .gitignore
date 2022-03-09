@@ -10,9 +10,9 @@ neutralino.js
 
 # Neutralinojs related files
 .storage
+.tmp
 *.log
 
-# Neutralinojs binaries and builds
 /start/startapp-linux
 *.db
 *.exe
