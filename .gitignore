@@ -13,3 +13,6 @@ neutralino.js
 *.log
 
 # Neutralinojs binaries and builds
+/start/startapp-linux
+*.db
+*.exe
