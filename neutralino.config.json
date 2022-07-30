@@ -13,7 +13,7 @@
     "enabled": true,
     "writeToLogFile": true
   },
-  "nativeAllowList": ["app.*", "os.*"],
+  "nativeAllowList": ["app.*", "os.*", "filesystem.*", "extensions.*"],
   "globalVariables": {
     "iconTray": "/resources/icons/iconTray.png"
   },
